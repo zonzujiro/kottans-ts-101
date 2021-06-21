@@ -1,20 +1,10 @@
 ---
-# try also 'default' to start simple
 theme: seriph
-# random image from a curated Unsplash collection by Anthony
-# like them? see https://unsplash.com/collections/94734566/slidev
 layout: image-right
 image: https://images.unsplash.com/photo-1621112943521-775623b0f651?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1534&q=80
-# apply any windi css classes to the current slide
 class: "text-center"
-# https://sli.dev/custom/highlighters.html
 highlighter: shiki
-# some information about the slides, markdown enabled
-info: |
-  ## Slidev Starter Template
-  Presentation slides for developers.
 
-  Learn more at [Sli.dev](https://sli.dev)
 ---
 
 <br>
@@ -50,10 +40,6 @@ h1 {
   -moz-text-fill-color: transparent;
 }
 </style>
-
-<!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
--->
 
 ---
 layout: image-right
@@ -116,9 +102,11 @@ h1 {
 
 ---
 
-# Правила
+# Пока не начали
 
-## Давайте сделаем жизнь друг-друга немного удобнее
+## Лекция большая - материала много
+
+Так что давайте сделаем жизнь друг-друга немного удобнее
 
 - Что-то неясно? Можно и нужно перебить и задать вопрос
 - Вопросы задавать лучше голосом - все хотят их услышать и понять, что "не я один не отстреливаю, что мне тут говорят"
@@ -140,7 +128,7 @@ h1 {
 
 # Я: вводная лекция
 
-## Материала много - займет время
+## Теория и совсем чуть-чуть практики
 
 - Немного про JavaScript
 - Немного о том, в кого TS "такой" и какой "такой"
@@ -162,18 +150,19 @@ h1 {
 
 ---
 layout: image-right
-image: https://images.unsplash.com/photo-1621112943521-775623b0f651?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1534&q=80
+image: https://am3pap006files.storage.live.com/y4mTBVrNzHtdMrvw6jDsU-hJCfsmoaWiqaW3CFPCn8J8ZjuoyWT7GlMAPvHB25KmHwIDT3RAmlhvhdcuWPoGk3KkVFuBgVe6hCLLilvZBDhlOIE8IJ7eJj9WYDGLwDUsFPjYGdPodek7HicHmNeRgIFvfMPqcRyupsKglFBblYUJNjNxPrQjtWOkJENQuv_m9Oc?width=2529&height=2529&cropmode=none
 ---
 
 # Женя: практика
 
-- Как пользоваться Utility Types о которых я расскажу
-- Расскажет более глубоко о том как они работают
+- Расчитывает на то, что у вас будет база
+- Расскажет как пользоваться Utility Types о которых расскажу я
+- Еще более углубленно покажет то, как они работают
 - И если все будет ок - решит пару интересных задач
 
 <br>
 
-Погнали?
+# Погнали?
 
 <style>
 h1 {
@@ -193,7 +182,7 @@ h1 {
 
 - Basic types - `number`, `string`, etc.
 - `interface` vs `type`
-- Union and intersection types
+- Union and intersection types - `|` и `&`
 
 <style>
 h1 {
@@ -248,13 +237,7 @@ layout: statement
 
 # Не так как вы хотели!
 
-## Но в целом, как написали - так и работает
-
-<br>
-
-```js
-  { name: 'developer', superPower: 'wrote that code', isSmart: 'probably' },
-```
+Но в целом, как написали - так и работает
 
 <style>
 h1 {
@@ -299,9 +282,9 @@ h1 {
 ## Потом уже для крутых разработчиков
 
 Время шло, задачи и проблемы становились сложнее:
-- часть из них решалась библиотеками - mootools, jquery, lodash
-- часть фреймворками - Backbone, AngularJS, React
-- а часть может решиться только типами - TypeScript и Flow
+- нехватка стандартной библиотеки решается другими библиотеками - `mootools`, `jQuery`, `lodash`
+- необходимость управления сложной логикой - фреймворками `Backbone`, `AngularJS`, `React` и т.п.
+- а часть других проблем может решиться только типами - `TypeScript` и `Flow`
 
 <style>
 h1 {
@@ -460,10 +443,10 @@ h1 {
 
 ## Но не все, а только интересные 😹
 
+Я расскажу:
+
 - `Pick<Type, Keys>` vs `Omit<Type, Keys>`
 - `Exclude<Type, ExcludeUnion>` vs `Extract<Type, Union>`
-- `Partial<Type>`
-- `Readonly<Type>`
 
 ## Неинтересные - легко поймете после интересных
 
@@ -572,6 +555,8 @@ const source = ['nikita', 'anastasiya', 'mascot']
 const result = exclude(source, ['nikita', 'anastasiya']) // ???
 ```
 
+Вам страшно?
+
 <style>
 h1 {
   background-color: #2B90B6;
@@ -641,7 +626,7 @@ h1 {
 }
 </style>
 
-Все! Вы знаете дженерики! Можно идти проситься на работу синьора! 💸
+Все! Вы знаете дженерики! Можно идти проситься на работу синьора-помидора! 💸
 
 ---
 layout: statement
@@ -819,22 +804,178 @@ h1 {
 </style>
 
 ---
+layout: statement
+---
 
-# inferring
+# Ща поплавит! 🤪
+## Можем взять паузу минут на 10-15. М?
 
-## `typeof` но на типах
+---
+
+# Что делает функция?
+
+```js
+const unpacked = variable => {
+  if (typeof variable === 'string') {
+    return 'string';
+  }
+
+  if (Array.isArray(variable)) {
+    if (onlyStrings(variable)) {
+      return 'string';
+    }
+
+    if (onlyNumbers(variable)) {
+      return 'number';
+    }
+  }
+
+  if (typeof variable === 'function') {
+    return typeof variable()
+  }
+
+  return typeof variable;
+};
+```
+
+Тепло...
+
+<style>
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
+}
+</style>
+
+---
+
+# Как думаете, что делает дженерик?
 
 ```ts
-const typeOfString = typeof 'string'
-type TypeOfString<infer P> = 
+type T0 = Unpacked<string>; // string
+type T1 = Unpacked<Array<string>>; // string
+type T2 = Unpacked<() => string>; // string
+type T3 = Unpacked<Promise<string>>; // string
+type T4 = Unpacked<Array<Promise<string>>>; // Promise<string>
+type T5 = Unpacked<Unpacked<Array<Promise<string>>>>; // string
 ```
+
+Горячее...
+
+<style>
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
+}
+</style>
+
+---
+
+# Реализация дженерика
+
+## BOOM! Магия TypeScript!
+
+```ts
+type Unpacked<T> = T extends Array<infer U> // Если это массив - верни тип значения в массиве
+  ? U
+  : T extends (...args: Array<any>) => infer U // Если это функция - верни тип того, что она вернет
+  ? U
+  : T extends Promise<infer U> // ???
+  ? U
+  : T;
+```
+Первая строка говорит следующее:
+> Если аргумент дженерика Т является расширением массива `<выгрызи тип из массива и запиши его в переменную U>`, верни U
+
+<style>
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
+}
+</style>
+
+---
+
+# Итого
+
+- `infer` - что-то вроде `typeof variable`, только для типов
+- объявляет переменную и кладет в нее ее тип
+- какую переменную туда класть и все такое - он "условно" решает сам
+<br>
+<br>
+
+# Поняли? Или повторим?
+
+> Если аргумент дженерика Т является расширением массива `<выгрызи тип из массива и запиши его в переменную U>`, верни U
+
+<style>
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
+}
+</style>
+
+---
+
+# А теперь все вместе!
+
+## В начале не понял...
+
+```ts
+type Unpacked<T> = T extends Array<infer U>
+  ? U
+  : T extends (...args: Array<any>) => infer U
+  ? U
+  : T extends Promise<infer U>
+  ? U
+  : T;
+
+type T0 = Unpacked<string>; // string
+type T1 = Unpacked<Array<string>>; // string
+type T2 = Unpacked<() => string>; // string
+type T3 = Unpacked<Promise<string>>; // string
+type T4 = Unpacked<Array<Promise<string>>>; // Promise<string>
+type T5 = Unpacked<Unpacked<Array<Promise<string>>>>; // string
+```
+
+<style>
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
+}
+</style>
 
 ---
 layout: statement
 ---
 
 # Постепенно закругляемся
-## И разбираем примеры
+## И разбираем примеры 
 
 <style>
 h1 {
@@ -884,7 +1025,7 @@ h1 {
 
 ## Следующий
 
-Обработаем событие :)
+Обработаем событие 🙂
 
 ```ts
 interface DocumentEventMap {
@@ -936,14 +1077,20 @@ h1 {
 
 # Домашнее задание
 
-## Шоб от зубов отскакивало
+## Шоб от зубов отскакивало!
+
+Медитируйте на ссылки:
 
 - [generic types](https://www.typescriptlang.org/docs/handbook/2/generics.html)
 - [utility type](https://www.typescriptlang.org/docs/handbook/utility-types.html)
-- inferring
-- mapped types 
+- [infer](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-8.html#type-inference-in-conditional-types)
 - [conditional types](https://www.typescriptlang.org/docs/handbook/2/conditional-types.html)
-- и все остальное о чем я тут говорил - [`keyof`](https://www.typescriptlang.org/docs/handbook/2/keyof-types.html)
+
+В начале лекции я говорил, что нужно знать для следующей - вы должны это знать.
+
+Ну и все остальное о чем я тут говорил... 
+
+Оооммм... 🧘
 
 <style>
 h1 {
