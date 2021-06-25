@@ -50,7 +50,7 @@ image: https://dm1files.storage.live.com/y4mCoQWpJOraz62DCi1-WE75N4jA7Yl9wYGPoRA
 
 ## Ваня Титаренко
 
- 💻 Frontend Developer в Wix
+ 💻 Team Lead в Wix
 
 - 😼 Community lead в Kottans
 - 💼 Бывший юрист
@@ -883,7 +883,78 @@ h1 {
 
 # Реализация дженерика
 
+## Тоже самое, но на TypeScript
+
+```ts
+type Unpacked<T> = T extends Array<string>
+  ? string
+  : T extends Array<number>
+  ? number
+  : T extends Promise<string>
+  ? string
+  : T extends Promise<number>
+  ? number
+  : T;
+```
+
+Удобно так писать?
+
+```ts
+type T0 = Unpacked<string>; // string
+type T1 = Unpacked<Array<string>>; // string
+type T2 = Unpacked<() => string>; // string
+type T3 = Unpacked<Promise<string>>; // string
+type T4 = Unpacked<Array<Promise<string>>>; // Promise<string>
+type T5 = Unpacked<Unpacked<Array<Promise<string>>>>; // string
+```
+
+<style>
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
+}
+</style>
+
+---
+
+# Новое ключевое слово - *infer*
+
 ## BOOM! Магия TypeScript!
+
+```ts
+type Unpacked<T> = T extends Array<infer U>
+  ? U
+  : T extends (...args: Array<any>) => infer U
+  ? U
+  : T extends Promise<infer U>
+  ? U
+  : T;
+```
+
+Давайте подумаем 🤔
+
+<style>
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
+}
+</style>
+
+---
+
+# Новое ключевое слово - *infer*
+
+## TS, сам додумайся какой там тип...
 
 ```ts
 type Unpacked<T> = T extends Array<infer U> // Если это массив - верни тип значения в массиве
@@ -939,7 +1010,7 @@ h1 {
 
 # А теперь все вместе!
 
-## В начале не понял...
+## ДЖЕ-НЕ-РИК!
 
 ```ts
 type Unpacked<T> = T extends Array<infer U>
@@ -957,6 +1028,8 @@ type T3 = Unpacked<Promise<string>>; // string
 type T4 = Unpacked<Array<Promise<string>>>; // Promise<string>
 type T5 = Unpacked<Unpacked<Array<Promise<string>>>>; // string
 ```
+
+IN-FER! УЗ-НАЙ ТИП САМ!
 
 <style>
 h1 {
@@ -1075,16 +1148,46 @@ h1 {
 
 ---
 
+# И еще пример
+
+## Что мы тут делаем?
+
+Обработаем событие 🙂
+
+```ts
+type MyType = keyof<infer typeof variable>
+```
+
+Новички на ринге:
+
+- `keyof`
+
+<style>
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
+}
+</style>
+
+---
+
 # Домашнее задание
 
 ## Шоб от зубов отскакивало!
 
 Медитируйте на ссылки:
 
-- [generic types](https://www.typescriptlang.org/docs/handbook/2/generics.html)
-- [utility type](https://www.typescriptlang.org/docs/handbook/utility-types.html)
-- [infer](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-8.html#type-inference-in-conditional-types)
-- [conditional types](https://www.typescriptlang.org/docs/handbook/2/conditional-types.html)
+- [Narrowing](https://www.typescriptlang.org/docs/handbook/2/narrowing.html)
+- [Generic types](https://www.typescriptlang.org/docs/handbook/2/generics.html)
+- [Utility type](https://www.typescriptlang.org/docs/handbook/utility-types.html)
+- [Type inference](https://www.typescriptlang.org/docs/handbook/type-inference.html) и [Infer](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-8.html#type-inference-in-conditional-types)
+- [Conditional types](https://www.typescriptlang.org/docs/handbook/2/conditional-types.html)
+- [Mapped types](https://www.typescriptlang.org/docs/handbook/2/mapped-types.html)
 
 В начале лекции я говорил, что нужно знать для следующей - вы должны это знать.
 
