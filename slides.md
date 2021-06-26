@@ -1044,6 +1044,42 @@ h1 {
 </style>
 
 ---
+
+# Ну и последнее
+
+## Mapped Types
+
+```ts
+interface IMyRecord {
+  key1: number;
+  key2: number;
+  key3: number;
+}
+```
+
+vs
+
+```ts
+type MyKeys = 'key1' | 'key2' | 'key3'
+
+interface IMyRecord {
+  [key: MyKeys]: number;
+}
+```
+
+<style>
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
+}
+</style>
+
+---
 layout: statement
 ---
 
@@ -1127,12 +1163,27 @@ h1 {
 }
 </style>
 
----
-layout: statement
----
+--- 
 
-# Пока что все. Задавайте вопросы
-## А потом домашку дам
+# И еще пример
+
+## Same-same, but different
+
+```ts
+type Source = ???
+
+const source1: Source = {
+  firstProperty: 4,
+  name: 'source',
+  title: 'Record'
+}
+
+const source2: Source = {
+  secondProperty: 4,
+  name: 'source',
+  title: 'Record'
+}
+```
 
 <style>
 h1 {
@@ -1150,17 +1201,294 @@ h1 {
 
 # И еще пример
 
-## Что мы тут делаем?
-
-Обработаем событие 🙂
+## Optional keys
 
 ```ts
-type MyType = keyof<infer typeof variable>
+type Source = {
+  firstProperty?: number;
+  secondProperty?: number;
+  name: string;
+  title: string;
+}
+
+const source1: Source = {
+  firstProperty: 4,
+  name: 'source',
+  title: 'Record'
+}
+
+const source2: Source = {
+  secondProperty: 4,
+  name: 'source',
+  title: 'Record'
+}
 ```
 
-Новички на ринге:
+<style>
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
+}
+</style>
 
-- `keyof`
+---
+
+# И еще пример
+
+## Пересечение типов 🙂
+
+```ts
+type Source = {
+  firstProperty: number;
+  name: string;
+  title: string;
+} | {
+  secondProperty: number;
+  name: string;
+  title: string;
+}
+
+const source1: Source = {
+  firstProperty: 4
+}
+
+const source2: Source = {
+  secondProperty: 4
+}
+
+```
+
+<style>
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
+}
+</style>
+
+---
+
+# Summary example
+
+## Get it done or die trying
+
+```ts
+
+type LeaveOnlyPrimitives = ???;
+
+type StrippedMouseEvent = LeaveOnlyPrimitives<MouseEvent>;
+
+// Dirty hack for learning purposes
+const someStrippedMouseEvent = {} as StrippedMouseEvent;
+
+someStrippedMouseEvent.initEvent(); // This expression is not callable. Type 'never' has no call signatures.
+```
+
+Что будем использовать - Union type, Mapped type, Conditional type, Generic, `extends`, `never`, `as`.
+
+Жаль `infer` нет 🤪
+
+<style>
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
+}
+</style>
+
+---
+
+# Die Hard
+
+## Дженерик
+
+```ts
+type LeaveOnlyPrimitives<TEvent> = {};
+
+type StrippedMouseEvent = LeaveOnlyPrimitives<MouseEvent>;
+
+// Dirty hack for learning purposes
+const someStrippedMouseEvent = {} as StrippedMouseEvent;
+
+someStrippedMouseEvent.initEvent(); // This expression is not callable. Type 'never' has no call signatures.
+```
+
+Что дальше?
+
+<style>
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
+}
+</style>
+
+---
+
+# Die Hard
+
+## Тип аргумента - только Event
+
+Расширения типа - `extends`
+
+```ts
+type LeaveOnlyPrimitives<TEvent extends Event> = {};
+
+type StrippedMouseEvent = LeaveOnlyPrimitives<MouseEvent>;
+
+// Dirty hack for learning purposes
+const someStrippedMouseEvent = {} as StrippedMouseEvent;
+
+someStrippedMouseEvent.initEvent(); // This expression is not callable. Type 'never' has no call signatures.
+```
+
+Что дальше?
+
+<style>
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
+}
+</style>
+
+---
+
+# Die Hard
+
+## Mapped type
+
+Наше событие должно иметь те же свойства и значения, что и оригинал
+
+
+```ts
+type LeaveOnlyPrimitives<TEvent extends Event> = {
+  [Property in keyof TEvent]: TEvent[Property]
+};
+
+type StrippedMouseEvent = LeaveOnlyPrimitives<MouseEvent>;
+
+// Dirty hack for learning purposes
+const someStrippedMouseEvent = {} as StrippedMouseEvent;
+
+someStrippedMouseEvent.initEvent(); // This expression is not callable. Type 'never' has no call signatures.
+```
+
+Правильно?
+
+<style>
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
+}
+</style>
+
+---
+
+# Die Hard
+
+## Conditional type
+
+Неправильно! Только примитивы
+
+```ts
+type LeaveOnlyPrimitives<TEvent extends Event> = {
+  [Property in keyof TEvent]: TEvent[Property] extends string 
+    ? TEvent[Property]
+    : never
+};
+
+type StrippedMouseEvent = LeaveOnlyPrimitives<MouseEvent>;
+
+// Dirty hack for learning purposes
+const someStrippedMouseEvent = {} as StrippedMouseEvent;
+
+someStrippedMouseEvent.initEvent(); // This expression is not callable. Type 'never' has no call signatures.
+```
+
+Это все?
+
+<style>
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
+}
+</style>
+
+---
+
+# Die Hard
+
+## Union Type
+
+Ну и все, в принципе 😊
+
+```ts
+type Primitives = number | string | boolean;
+
+type LeaveOnlyPrimitives<TEvent extends Event> = {
+  [Property in keyof TEvent]: TEvent[Property] extends Primitives
+    ? TEvent[Property]
+    : never;
+};
+
+type StrippedMouseEvent = LeaveOnlyPrimitives<MouseEvent>;
+
+// Dirty hack for learning purposes
+const someStrippedMouseEvent = {} as StrippedMouseEvent;
+
+someStrippedMouseEvent.initEvent(); // This expression is not callable. Type 'never' has no call signatures.
+```
+
+<style>
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
+}
+</style>
+
+---
+layout: statement
+---
+
+# Пока что все. Задавайте вопросы
+## А потом домашку дам
 
 <style>
 h1 {
